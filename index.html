@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marco Ambricca</title>
+<title>Marco Ambricca — Desarrollador Full-Stack</title>
 <meta name="description" content="Portfolio de Marco Ambricca, estudiante de Ciencias de la Computación y desarrollador full-stack.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 
   /* =====================================================================
@@ -34,7 +34,7 @@
     --accent: var(--c1);
     --accent-soft: var(--c5);
     --radius: 12px;
-    --maxw: 700px;
+    --maxw: 980px;
   }
 
   *{ box-sizing: border-box; }
@@ -46,18 +46,24 @@
     color: var(--text);
     font-family: 'Inter', sans-serif;
     font-size: 15px;
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3{
-    font-family: 'Space Grotesk', sans-serif;
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
-
+  h1, h2, h3{ margin: 0; letter-spacing: -0.01em; }
+  em{ font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; }
   a{ color: inherit; text-decoration: none; }
   ::selection{ background: var(--c5); color: var(--c1); }
+  img{ max-width: 100%; display: block; }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .eyebrow{
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    margin-bottom: 12px;
+  }
 
   /* ---- Nav ---- */
   nav{
@@ -65,95 +71,73 @@
     top: 0;
     z-index: 50;
     display: flex;
-    justify-content: center;
-    gap: 2px;
-    padding: 10px;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
+    gap: 10px;
   }
-  nav a{
+  .logo{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .nav-links{ display: flex; gap: 4px; flex-wrap: wrap; }
+  .nav-links a{
     font-size: 12.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     color: var(--muted);
-    padding: 6px 12px;
+    padding: 7px 12px;
     border-radius: 999px;
     transition: color .2s ease, background .2s ease;
   }
-  nav a:hover{ color: var(--text); }
-  nav a.active{ color: var(--text); background: var(--surface-hover); }
-
-  main{
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  section{
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  section:last-of-type{ border-bottom: none; }
-
-  .section-head{
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .section-head h2{ font-size: 1.15rem; font-weight: 600; }
-  .section-head .count{ color: var(--muted-2); font-size: 12px; }
+  .nav-links a:hover, .nav-links a.active{ color: var(--text); background: var(--surface-hover); }
 
   /* ---- Hero ---- */
   .hero{
-    padding: 40px 0 32px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    padding: 84px 0 56px;
+    text-align: center;
   }
-  .photo{
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
+  .hero .eyebrow{ display: flex; justify-content: center; gap: 8px; }
+  .hero .photo{
+    width: 92px; height: 92px; border-radius: 50%;
     border: 1.5px dashed var(--border-strong);
     background: var(--surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted-2);
-    font-size: 11px;
-    text-align: center;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted-2); font-size: 11px; text-align: center;
+    margin: 0 auto 26px;
     overflow: hidden;
   }
-  .photo img{ width: 100%; height: 100%; object-fit: cover; }
-
-  .hero-text h1{
-    font-size: 1.7rem;
-    font-weight: 600;
+  .hero .photo img{ width: 100%; height: 100%; object-fit: cover; }
+  .hero h1{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    line-height: 1.12;
+    max-width: 16ch;
+    margin: 0 auto;
   }
-  .hero-text .role{
+  .hero p.sub{
+    max-width: 48ch;
+    margin: 22px auto 0;
     color: var(--muted);
-    font-size: 13.5px;
-    margin-top: 4px;
+    font-size: 15px;
   }
-
   .hero-links{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 14px;
+    display: flex; justify-content: center; gap: 10px;
+    margin-top: 30px; flex-wrap: wrap;
   }
   .btn{
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    border-radius: 9px;
-    font-size: 13px;
-    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 11px 22px; border-radius: 9px;
+    font-size: 12.5px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
     border: 1px solid var(--border);
     transition: background .2s ease, border-color .2s ease, transform .15s ease;
   }
@@ -162,137 +146,253 @@
   .btn-ghost{ background: var(--surface); color: var(--text); }
   .btn-ghost:hover{ background: var(--surface-hover); border-color: var(--border-strong); }
 
-  /* ---- About ---- */
-  #sobre-mi p{ color: var(--muted); font-size: 14px; }
-  #sobre-mi p + p{ margin-top: 10px; }
-
-  .stat-row{
-    display: flex;
-    gap: 22px;
-    margin-top: 18px;
-    flex-wrap: wrap;
+  /* ---- Marquee ---- */
+  .marquee-section{ padding: 26px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .marquee-section .eyebrow{ text-align: center; }
+  .marquee{ overflow: hidden; white-space: nowrap; mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+  .marquee-track{
+    display: inline-flex; gap: 40px;
+    animation: scroll 26s linear infinite;
   }
-  .stat .num{ font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; }
-  .stat .label{ color: var(--muted-2); font-size: 11.5px; }
+  .marquee-track span{
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: var(--muted-2);
+    white-space: nowrap;
+  }
+  @keyframes scroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
 
-  /* ---- Cards ---- */
+  /* ---- Section shared ---- */
+  section{ padding: 64px 0; }
+  .section-center{ text-align: center; }
+  .section-center h2{ max-width: 20ch; margin: 0 auto; }
+  .section-center p.lead{ max-width: 50ch; margin: 18px auto 0; color: var(--muted); }
+  h2{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    line-height: 1.2;
+  }
+
+  /* ---- Servicios ---- */
+  .services{ border-top: 1px solid var(--border); }
+  .service-list{
+    max-width: 620px; margin: 40px auto 0;
+    display: flex; flex-direction: column;
+  }
+  .service-item{
+    display: flex; align-items: baseline; gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .service-item .no{ font-family: 'Fraunces', serif; font-style: italic; color: var(--muted-2); font-size: 13px; width: 22px; flex-shrink: 0; }
+  .service-item .name{ font-weight: 600; font-size: 15px; }
+  .services-cta{ text-align: center; margin-top: 34px; }
+
+  /* ---- Sobre mí ---- */
+  .about{ border-top: 1px solid var(--border); }
+  .about-grid{
+    display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: center;
+  }
+  .about .photo{
+    width: 100%; aspect-ratio: 1; border-radius: 50%;
+    border: 1.5px dashed var(--border-strong);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted-2); font-size: 11.5px; text-align: center;
+    overflow: hidden;
+  }
+  .about .photo img{ width: 100%; height: 100%; object-fit: cover; }
+  .about-copy h2{ margin-bottom: 14px; }
+  .about-copy p{ color: var(--muted); font-size: 14.5px; }
+  .about-copy p + p{ margin-top: 10px; }
+  @media (max-width: 640px){
+    .about-grid{ grid-template-columns: 1fr; text-align: center; }
+    .about .photo{ width: 130px; margin: 0 auto; }
+  }
+
+  /* ---- Experiencia ---- */
+  .experience{ border-top: 1px solid var(--border); }
   .card{
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 18px 20px;
+    padding: 22px 24px;
+    max-width: 620px; margin: 40px auto 0;
   }
-  .card + .card{ margin-top: 12px; }
-
-  .exp-top{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 8px;
-  }
-  .exp-role{ font-size: 14.5px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
-  .exp-org{ color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .exp-top{ display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .exp-role{ font-size: 15px; font-weight: 600; font-family: 'Fraunces', serif; }
+  .exp-org{ color: var(--muted); font-size: 12.5px; margin-top: 3px; }
   .exp-date{ color: var(--muted-2); font-size: 12px; white-space: nowrap; }
   .card p{ color: var(--muted); font-size: 13.5px; margin: 0; }
+  .tags{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag{ font-size: 11.5px; color: var(--muted); background: var(--accent-soft); border: 1px solid var(--border); padding: 3px 9px; border-radius: 6px; }
 
-  .tags{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-  .tag{
-    font-size: 11.5px;
-    color: var(--muted);
-    background: var(--accent-soft);
+  /* ---- Proyectos gallery ---- */
+  .projects{ border-top: 1px solid var(--border); }
+  .gallery{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-top: 40px;
+  }
+  .g-item{
+    border-radius: var(--radius);
+    padding: 26px 20px;
+    color: var(--bg);
+    min-height: 190px;
+    display: flex; flex-direction: column; justify-content: flex-end;
     border: 1px solid var(--border);
-    padding: 3px 9px;
-    border-radius: 6px;
   }
+  .g-item:nth-child(1){ background: var(--c1); }
+  .g-item:nth-child(2){ background: var(--c2); }
+  .g-item:nth-child(3){ background: var(--c3); }
+  .g-item .g-title{ font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem; }
+  .g-item p{ font-size: 12.5px; margin-top: 8px; opacity: 0.85; }
+  .g-item .tags{ margin-top: 12px; }
+  .g-item .tag{ background: color-mix(in srgb, var(--bg) 85%, transparent); border-color: transparent; color: var(--c1); }
+  @media (max-width: 780px){ .gallery{ grid-template-columns: 1fr; } }
 
-  /* ---- Education timeline ---- */
-  .timeline{ position: relative; padding-left: 18px; }
-  .timeline::before{
-    content: "";
-    position: absolute; left: 4px; top: 4px; bottom: 4px;
-    width: 1.5px;
-    background: var(--border-strong);
+  /* ---- Cómo trabajo ---- */
+  .approach{ border-top: 1px solid var(--border); }
+  .approach-grid{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    margin-top: 40px;
   }
-  .t-item{ position: relative; padding-bottom: 18px; }
+  .approach-item{
+    border-left: 2px solid var(--border-strong);
+    padding-left: 16px;
+  }
+  .approach-item .q{ font-family: 'Fraunces', serif; font-style: italic; font-size: 1.05rem; }
+  .approach-item p{ color: var(--muted); font-size: 13px; margin-top: 8px; }
+  @media (max-width: 720px){ .approach-grid{ grid-template-columns: 1fr; } }
+
+  /* ---- Educación ---- */
+  .education{ border-top: 1px solid var(--border); }
+  .timeline{ position: relative; padding-left: 20px; max-width: 500px; margin: 40px auto 0; }
+  .timeline::before{
+    content: ""; position: absolute; left: 4px; top: 4px; bottom: 4px;
+    width: 1.5px; background: var(--border-strong);
+  }
+  .t-item{ position: relative; padding-bottom: 20px; }
   .t-item:last-child{ padding-bottom: 0; }
   .t-item::before{
-    content: "";
-    position: absolute; left: -18px; top: 3px;
+    content: ""; position: absolute; left: -20px; top: 3px;
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--c2);
+    background: var(--bg); border: 2px solid var(--c2);
   }
   .t-date{ color: var(--muted-2); font-size: 11.5px; }
-  .t-title{ font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13.5px; margin-top: 2px; }
+  .t-title{ font-family: 'Fraunces', serif; font-weight: 600; font-size: 14px; margin-top: 2px; }
   .t-sub{ color: var(--muted); font-size: 12.5px; margin-top: 1px; }
 
-  /* ---- Skills ---- */
-  .skill-groups{ display: flex; flex-direction: column; gap: 14px; }
-  .skill-group .g-title{ font-size: 11.5px; color: var(--muted-2); margin-bottom: 6px; }
-  .chip-row{ display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip{
-    font-size: 12.5px;
-    padding: 5px 11px;
-    border-radius: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    transition: border-color .2s ease;
-  }
+  /* ---- Habilidades ---- */
+  .skills{ border-top: 1px solid var(--border); }
+  .skill-groups{ display: flex; flex-direction: column; gap: 16px; max-width: 620px; margin: 40px auto 0; }
+  .skill-group .g-title2{ font-size: 11.5px; color: var(--muted-2); margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .chip-row{ display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip{ font-size: 12.5px; padding: 6px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); transition: border-color .2s ease; }
   .chip:hover{ border-color: var(--c2); }
 
-  /* ---- Contact / footer ---- */
-  footer{ padding: 36px 0 40px; }
-  .contact-row{ display: flex; flex-wrap: wrap; gap: 8px; }
-  .fine{ margin-top: 26px; color: var(--muted-2); font-size: 12px; }
-
-  @media (max-width: 480px){
-    .hero{ padding-top: 28px; }
+  /* ---- CTA final ---- */
+  .cta-final{
+    border-top: 1px solid var(--border);
+    text-align: center;
   }
+  .cta-final h2{ max-width: 18ch; margin: 0 auto; }
+  .cta-final p{ max-width: 42ch; margin: 18px auto 26px; color: var(--muted); }
+
+  /* ---- Footer ---- */
+  footer{ border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-grid{
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+  }
+  .footer-links{ display: flex; gap: 14px; flex-wrap: wrap; }
+  .footer-links a{ font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .footer-links a:hover{ color: var(--text); }
+  .fine{ color: var(--muted-2); font-size: 12px; }
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a href="#inicio" class="active">Inicio</a>
-  <a href="#sobre-mi">Sobre mí</a>
-  <a href="#experiencia">Experiencia</a>
-  <a href="#proyectos">Proyectos</a>
-  <a href="#educacion">Educación</a>
-  <a href="#contacto">Contacto</a>
+  <div class="logo">Marco Ambricca</div>
+  <div class="nav-links">
+    <a href="#inicio" class="active">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#educacion">Educación</a>
+    <a href="#contacto">Contacto</a>
+  </div>
 </nav>
 
-<main>
-
-  <section class="hero" id="inicio">
-    <div class="photo" id="photo-slot">Tu foto</div>
-    <div class="hero-text">
-      <h1>Marco Ambricca</h1>
-      <div class="role">Desarrollador full-stack · Estudiante de Cs. de la Computación (UBA)</div>
-      <div class="hero-links">
-        <a class="btn btn-primary" href="mailto:ambriccam@gmail.com">Email</a>
-        <a class="btn btn-ghost" href="https://github.com/marcoambricca" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/marcoambricca" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-ghost" href="tel:+5491126215005">+54 9 11 2621 5005</a>
-      </div>
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="eyebrow">Desarrollador Full-Stack · Buenos Aires, Argentina</div>
+    <div class="photo" id="photo-slot-hero">Tu foto</div>
+    <h1>Donde las ideas se vuelven <em>software</em></h1>
+    <p class="sub">Soy Marco Ambricca, estudiante de Ciencias de la Computación en la UBA. Diseño y construyo productos digitales de punta a punta — del backend al frontend — con IA integrada cuando tiene sentido.</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="mailto:ambriccam@gmail.com">Trabajemos juntos</a>
+      <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="sobre-mi">
-    <div class="section-head"><h2>Sobre mí</h2></div>
-    <p>Curso la Licenciatura en Ciencias de la Computación en la UBA, después de graduarme con honores del Bachiller en Informática de ORT Argentina.</p>
-    <p>Hice mi práctica pre-profesional en Softtek desarrollando un e-commerce con herramientas Low Code, y desde entonces construyo proyectos propios que combinan Python, bases de datos relacionales y frontends en React o JS — casi siempre con IA de por medio.</p>
-    <div class="stat-row">
-      <div class="stat"><div class="num">3</div><div class="label">Proyectos con IA</div></div>
-      <div class="stat"><div class="num">5+</div><div class="label">Lenguajes</div></div>
-      <div class="stat"><div class="num">Honores</div><div class="label">ORT Argentina</div></div>
+<div class="marquee-section">
+  <div class="eyebrow">Tecnologías con las que trabajo</div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>PYTHON</span><span>DJANGO</span><span>REACT</span><span>POSTGRESQL</span><span>TYPESCRIPT</span><span>NODE.JS</span><span>MONGODB</span><span>C#</span><span>GIT</span><span>FIGMA</span>
+      <span>PYTHON</span><span>DJANGO</span><span>REACT</span><span>POSTGRESQL</span><span>TYPESCRIPT</span><span>NODE.JS</span><span>MONGODB</span><span>C#</span><span>GIT</span><span>FIGMA</span>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section id="experiencia">
-    <div class="section-head"><h2>Experiencia</h2></div>
-    <div class="card">
+<section class="process">
+  <div class="wrap section-center">
+    <div class="eyebrow">Un enfoque de desarrollo prolijo</div>
+    <h2>Claro, <em>prolijo</em> y pensado <em>para crecer</em></h2>
+    <p class="lead">Cada proyecto arranca por entender el problema real, no solo el pedido. De ahí a un backend sólido, una interfaz simple de usar, y código que se pueda mantener el día de mañana.</p>
+    <div class="services-cta"><a class="btn btn-ghost" href="#proyectos">Browse work</a></div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="wrap section-center">
+    <div class="eyebrow">Donde estrategia y código se alinean</div>
+    <h2>Servicios que ofrezco</h2>
+    <div class="service-list">
+      <div class="service-item"><span class="no">01</span><span class="name">Desarrollo Backend</span></div>
+      <div class="service-item"><span class="no">02</span><span class="name">Desarrollo Frontend</span></div>
+      <div class="service-item"><span class="no">03</span><span class="name">Integración de IA</span></div>
+      <div class="service-item"><span class="no">04</span><span class="name">Diseño de Bases de Datos</span></div>
+      <div class="service-item"><span class="no">05</span><span class="name">APIs & Automatización</span></div>
+      <div class="service-item"><span class="no">06</span><span class="name">UI/UX & Prototipado</span></div>
+    </div>
+    <div class="services-cta"><a class="btn btn-primary" href="#habilidades">Explorar habilidades</a></div>
+  </div>
+</section>
+
+<section class="about" id="sobre-mi">
+  <div class="wrap about-grid">
+    <div class="photo" id="photo-slot-about">Tu foto</div>
+    <div class="about-copy">
+      <div class="eyebrow">Sobre mí</div>
+      <h2>Marco Ambricca</h2>
+      <p>¡Hola! Curso la Licenciatura en Ciencias de la Computación en la UBA, después de graduarme con honores del Bachiller en Informática de ORT Argentina.</p>
+      <p>Hice mi práctica pre-profesional en Softtek desarrollando un e-commerce con herramientas Low Code, y desde entonces vengo construyendo proyectos propios que combinan Python, bases de datos relacionales y frontends en React o JS — casi siempre con algo de inteligencia artificial en el medio.</p>
+      <div class="services-cta" style="text-align:left; margin-top: 22px;"><a class="btn btn-ghost" href="#educacion">Más sobre mí</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experiencia">
+  <div class="wrap section-center">
+    <div class="eyebrow">Experiencia</div>
+    <h2>Cómo empecé</h2>
+    <div class="card" style="text-align:left;">
       <div class="exp-top">
         <div>
           <div class="exp-role">Práctica Pre-Profesional</div>
@@ -301,34 +401,61 @@
         <div class="exp-date">Sep — Nov 2024</div>
       </div>
       <p>Desarrollé de forma individual un e-commerce funcional con herramientas Low Code de Microsoft, siguiendo una especificación real de la empresa.</p>
-      <div class="tags">
-        <span class="tag">SharePoint</span><span class="tag">Power Apps</span><span class="tag">SAP</span>
+      <div class="tags"><span class="tag">SharePoint</span><span class="tag">Power Apps</span><span class="tag">SAP</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="proyectos">
+  <div class="wrap section-center">
+    <div class="eyebrow">Portfolio</div>
+    <h2>Algunos proyectos propios</h2>
+    <div class="gallery">
+      <div class="g-item">
+        <div class="g-title">Probador Virtual con IA</div>
+        <p>Sugiere tallas y estilos con un modelo de IA; backend en Python y base en MSSQL.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">MSSQL</span></div>
+      </div>
+      <div class="g-item">
+        <div class="g-title">Asistente de E-commerce</div>
+        <p>Bot conversacional para atención al cliente vía WhatsApp y email.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">IA</span></div>
+      </div>
+      <div class="g-item">
+        <div class="g-title">groovr</div>
+        <p>Plataforma social de música full-stack con JWT y diseño responsive.</p>
+        <div class="tags"><span class="tag">Django</span><span class="tag">Next.js</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="proyectos">
-    <div class="section-head"><h2>Proyectos</h2></div>
-    <div class="card">
-      <div class="exp-role">Probador Virtual con IA</div>
-      <p>Sugiere tallas y estilos con un modelo de IA; backend en Python y base de datos en MSSQL.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">MSSQL</span></div>
+<section class="approach">
+  <div class="wrap section-center">
+    <div class="eyebrow">Cómo trabajo</div>
+    <h2>Tres cosas que no negocio</h2>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="q">Comunicación clara</div>
+        <p>Updates concretos en cada etapa, sin sorpresas de último momento.</p>
+      </div>
+      <div class="approach-item">
+        <div class="q">Código prolijo</div>
+        <p>Documentado y pensado para que otra persona (o yo en seis meses) lo entienda.</p>
+      </div>
+      <div class="approach-item">
+        <div class="q">Pensado para escalar</div>
+        <p>Decisiones técnicas que aguantan el crecimiento del producto, no solo el demo.</p>
+      </div>
     </div>
-    <div class="card">
-      <div class="exp-role">Asistente de E-commerce Multiplataforma</div>
-      <p>Bot conversacional para atención al cliente: consultas, seguimiento de pedidos y devoluciones por WhatsApp y email.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">IA conversacional</span><span class="tag">WhatsApp API</span></div>
-    </div>
-    <div class="card">
-      <div class="exp-role">groovr — Plataforma Social de Música</div>
-      <p>Red social para reseñas de música y recomendaciones. Full-stack con JWT y diseño responsive.</p>
-      <div class="tags"><span class="tag">Django REST Framework</span><span class="tag">PostgreSQL</span><span class="tag">Next.js 14</span><span class="tag">TypeScript</span></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="educacion">
-    <div class="section-head"><h2>Educación</h2></div>
-    <div class="timeline">
+<section class="education" id="educacion">
+  <div class="wrap section-center">
+    <div class="eyebrow">Formación</div>
+    <h2>Educación</h2>
+    <div class="timeline" style="text-align:left;">
       <div class="t-item">
         <div class="t-date">2024 — presente</div>
         <div class="t-title">Licenciatura en Ciencias de la Computación</div>
@@ -340,13 +467,16 @@
         <div class="t-sub">ORT Argentina — Graduado con honores</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="habilidades">
-    <div class="section-head"><h2>Habilidades</h2></div>
-    <div class="skill-groups">
+<section class="skills" id="habilidades">
+  <div class="wrap section-center">
+    <div class="eyebrow">Stack</div>
+    <h2>Habilidades</h2>
+    <div class="skill-groups" style="text-align:left;">
       <div class="skill-group">
-        <div class="g-title">Lenguajes y bases de datos</div>
+        <div class="g-title2">Lenguajes y bases de datos</div>
         <div class="chip-row">
           <span class="chip">Python</span><span class="chip">C</span><span class="chip">C#</span>
           <span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">SQL Server</span>
@@ -354,61 +484,72 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="g-title">Backend y patrones</div>
+        <div class="g-title2">Backend y patrones</div>
         <div class="chip-row">
           <span class="chip">Node.js</span><span class="chip">Deno</span><span class="chip">Django</span>
           <span class="chip">MVC</span><span class="chip">POO</span><span class="chip">Redis</span><span class="chip">Sockets</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="g-title">Frontend y diseño</div>
+        <div class="g-title2">Frontend y diseño</div>
         <div class="chip-row">
           <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">TypeScript</span>
           <span class="chip">React</span><span class="chip">Figma</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="g-title">Control de versiones y DevOps</div>
+        <div class="g-title2">Control de versiones y DevOps</div>
         <div class="chip-row">
           <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GitLab</span><span class="chip">Linux</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer id="contacto">
-    <div class="section-head"><h2>Contacto</h2></div>
-    <div class="contact-row">
-      <a class="btn btn-primary" href="mailto:ambriccam@gmail.com">ambriccam@gmail.com</a>
+<section class="cta-final">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center; display:flex;">Contacto</div>
+    <h2>¿Hablamos de tu <em>próximo proyecto</em>?</h2>
+    <p>Cero vueltas: contame qué necesitás y lo hablamos.</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="mailto:ambriccam@gmail.com">Escribime</a>
       <a class="btn btn-ghost" href="tel:+5491126215005">+54 9 11 2621 5005</a>
-      <a class="btn btn-ghost" href="https://github.com/marcoambricca" target="_blank" rel="noopener">github.com/marcoambricca</a>
+      <a class="btn btn-ghost" href="https://github.com/marcoambricca" target="_blank" rel="noopener">GitHub</a>
       <a class="btn btn-ghost" href="https://www.linkedin.com/in/marcoambricca" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <div class="fine">Marco Ambricca — hecho con HTML, CSS y JS.</div>
-  </footer>
+  </div>
+</section>
 
-</main>
+<footer id="contacto">
+  <div class="wrap footer-grid">
+    <div class="fine">© 2026 Marco Ambricca. Hecho con HTML, CSS y JS.</div>
+    <div class="footer-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#educacion">Educación</a>
+      <a href="mailto:ambriccam@gmail.com">Contacto</a>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // Active nav link on scroll
-  const sections = document.querySelectorAll('main section');
-  const navLinks = document.querySelectorAll('#nav a');
-
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
         const id = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-        });
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
       }
     });
   }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-
   sections.forEach(s => observer.observe(s));
 
-  // Drop a photo here: replace the placeholder div with an <img>
-  // e.g. <div class="photo"><img src="your-photo.jpg" alt="Marco Ambricca"></div>
+  // Drop photos in by replacing the placeholder divs with <img> tags, e.g.:
+  // <div class="photo"><img src="your-photo.jpg" alt="Marco Ambricca"></div>
 </script>
 
 </body>
