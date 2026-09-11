@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco Ambricca</title>
+<meta name="description" content="Portfolio de Marco Ambricca, estudiante de Ciencias de la Computación y desarrollador full-stack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* =====================================================================
+     PALETTE — change only these 5 values to restyle the entire page.
+     Everything below maps to one of these five.
+     ===================================================================== */
+  :root{
+    --c1: #36453b; /* darkest — primary text, headings, primary buttons */
+    --c2: #596869; /* mid-dark — secondary accents */
+    --c3: #515751; /* mid — muted text, borders */
+    --c4: #f5f9e9; /* lightest — page background */
+    --c5: #c2c1a5; /* mid-light — tags, highlights, hovers */
+  }
+
+  :root{
+    --bg: var(--c4);
+    --surface: color-mix(in srgb, var(--c4) 55%, white);
+    --surface-hover: color-mix(in srgb, var(--c5) 25%, white);
+    --border: color-mix(in srgb, var(--c1) 16%, transparent);
+    --border-strong: color-mix(in srgb, var(--c1) 30%, transparent);
+    --text: var(--c1);
+    --muted: var(--c3);
+    --muted-2: color-mix(in srgb, var(--c3) 70%, var(--c4));
+    --accent: var(--c1);
+    --accent-soft: var(--c5);
+    --radius: 12px;
+    --maxw: 700px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3{
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  ::selection{ background: var(--c5); color: var(--c1); }
+
+  /* ---- Nav ---- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    padding: 10px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  nav a{
+    font-size: 12.5px;
+    color: var(--muted);
+    padding: 6px 12px;
+    border-radius: 999px;
+    transition: color .2s ease, background .2s ease;
+  }
+  nav a:hover{ color: var(--text); }
+  nav a.active{ color: var(--text); background: var(--surface-hover); }
+
+  main{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  section{
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .section-head h2{ font-size: 1.15rem; font-weight: 600; }
+  .section-head .count{ color: var(--muted-2); font-size: 12px; }
+
+  /* ---- Hero ---- */
+  .hero{
+    padding: 40px 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .photo{
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 1.5px dashed var(--border-strong);
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-2);
+    font-size: 11px;
+    text-align: center;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .photo img{ width: 100%; height: 100%; object-fit: cover; }
+
+  .hero-text h1{
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+  .hero-text .role{
+    color: var(--muted);
+    font-size: 13.5px;
+    margin-top: 4px;
+  }
+
+  .hero-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    transition: background .2s ease, border-color .2s ease, transform .15s ease;
+  }
+  .btn-primary{ background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn-primary:hover{ transform: translateY(-1px); }
+  .btn-ghost{ background: var(--surface); color: var(--text); }
+  .btn-ghost:hover{ background: var(--surface-hover); border-color: var(--border-strong); }
+
+  /* ---- About ---- */
+  #sobre-mi p{ color: var(--muted); font-size: 14px; }
+  #sobre-mi p + p{ margin-top: 10px; }
+
+  .stat-row{
+    display: flex;
+    gap: 22px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .stat .num{ font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 600; }
+  .stat .label{ color: var(--muted-2); font-size: 11.5px; }
+
+  /* ---- Cards ---- */
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .card + .card{ margin-top: 12px; }
+
+  .exp-top{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .exp-role{ font-size: 14.5px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+  .exp-org{ color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .exp-date{ color: var(--muted-2); font-size: 12px; white-space: nowrap; }
+  .card p{ color: var(--muted); font-size: 13.5px; margin: 0; }
+
+  .tags{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .tag{
+    font-size: 11.5px;
+    color: var(--muted);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    padding: 3px 9px;
+    border-radius: 6px;
+  }
+
+  /* ---- Education timeline ---- */
+  .timeline{ position: relative; padding-left: 18px; }
+  .timeline::before{
+    content: "";
+    position: absolute; left: 4px; top: 4px; bottom: 4px;
+    width: 1.5px;
+    background: var(--border-strong);
+  }
+  .t-item{ position: relative; padding-bottom: 18px; }
+  .t-item:last-child{ padding-bottom: 0; }
+  .t-item::before{
+    content: "";
+    position: absolute; left: -18px; top: 3px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--c2);
+  }
+  .t-date{ color: var(--muted-2); font-size: 11.5px; }
+  .t-title{ font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13.5px; margin-top: 2px; }
+  .t-sub{ color: var(--muted); font-size: 12.5px; margin-top: 1px; }
+
+  /* ---- Skills ---- */
+  .skill-groups{ display: flex; flex-direction: column; gap: 14px; }
+  .skill-group .g-title{ font-size: 11.5px; color: var(--muted-2); margin-bottom: 6px; }
+  .chip-row{ display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip{
+    font-size: 12.5px;
+    padding: 5px 11px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: border-color .2s ease;
+  }
+  .chip:hover{ border-color: var(--c2); }
+
+  /* ---- Contact / footer ---- */
+  footer{ padding: 36px 0 40px; }
+  .contact-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .fine{ margin-top: 26px; color: var(--muted-2); font-size: 12px; }
+
+  @media (max-width: 480px){
+    .hero{ padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#inicio" class="active">Inicio</a>
+  <a href="#sobre-mi">Sobre mí</a>
+  <a href="#experiencia">Experiencia</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#educacion">Educación</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<main>
+
+  <section class="hero" id="inicio">
+    <div class="photo" id="photo-slot">Tu foto</div>
+    <div class="hero-text">
+      <h1>Marco Ambricca</h1>
+      <div class="role">Desarrollador full-stack · Estudiante de Cs. de la Computación (UBA)</div>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="mailto:ambriccam@gmail.com">Email</a>
+        <a class="btn btn-ghost" href="https://github.com/marcoambricca" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/marcoambricca" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="tel:+5491126215005">+54 9 11 2621 5005</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="section-head"><h2>Sobre mí</h2></div>
+    <p>Curso la Licenciatura en Ciencias de la Computación en la UBA, después de graduarme con honores del Bachiller en Informática de ORT Argentina.</p>
+    <p>Hice mi práctica pre-profesional en Softtek desarrollando un e-commerce con herramientas Low Code, y desde entonces construyo proyectos propios que combinan Python, bases de datos relacionales y frontends en React o JS — casi siempre con IA de por medio.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">3</div><div class="label">Proyectos con IA</div></div>
+      <div class="stat"><div class="num">5+</div><div class="label">Lenguajes</div></div>
+      <div class="stat"><div class="num">Honores</div><div class="label">ORT Argentina</div></div>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="section-head"><h2>Experiencia</h2></div>
+    <div class="card">
+      <div class="exp-top">
+        <div>
+          <div class="exp-role">Práctica Pre-Profesional</div>
+          <div class="exp-org">Softtek — Programa Hola Mundo Profesional (ORT)</div>
+        </div>
+        <div class="exp-date">Sep — Nov 2024</div>
+      </div>
+      <p>Desarrollé de forma individual un e-commerce funcional con herramientas Low Code de Microsoft, siguiendo una especificación real de la empresa.</p>
+      <div class="tags">
+        <span class="tag">SharePoint</span><span class="tag">Power Apps</span><span class="tag">SAP</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="section-head"><h2>Proyectos</h2></div>
+    <div class="card">
+      <div class="exp-role">Probador Virtual con IA</div>
+      <p>Sugiere tallas y estilos con un modelo de IA; backend en Python y base de datos en MSSQL.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">MSSQL</span></div>
+    </div>
+    <div class="card">
+      <div class="exp-role">Asistente de E-commerce Multiplataforma</div>
+      <p>Bot conversacional para atención al cliente: consultas, seguimiento de pedidos y devoluciones por WhatsApp y email.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">IA conversacional</span><span class="tag">WhatsApp API</span></div>
+    </div>
+    <div class="card">
+      <div class="exp-role">groovr — Plataforma Social de Música</div>
+      <p>Red social para reseñas de música y recomendaciones. Full-stack con JWT y diseño responsive.</p>
+      <div class="tags"><span class="tag">Django REST Framework</span><span class="tag">PostgreSQL</span><span class="tag">Next.js 14</span><span class="tag">TypeScript</span></div>
+    </div>
+  </section>
+
+  <section id="educacion">
+    <div class="section-head"><h2>Educación</h2></div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-date">2024 — presente</div>
+        <div class="t-title">Licenciatura en Ciencias de la Computación</div>
+        <div class="t-sub">Universidad de Buenos Aires (UBA)</div>
+      </div>
+      <div class="t-item">
+        <div class="t-date">2019 — 2024</div>
+        <div class="t-title">Bachiller en Informática</div>
+        <div class="t-sub">ORT Argentina — Graduado con honores</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="section-head"><h2>Habilidades</h2></div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="g-title">Lenguajes y bases de datos</div>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">C</span><span class="chip">C#</span>
+          <span class="chip">JavaScript</span><span class="chip">SQL</span><span class="chip">SQL Server</span>
+          <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">LaTeX</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-title">Backend y patrones</div>
+        <div class="chip-row">
+          <span class="chip">Node.js</span><span class="chip">Deno</span><span class="chip">Django</span>
+          <span class="chip">MVC</span><span class="chip">POO</span><span class="chip">Redis</span><span class="chip">Sockets</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-title">Frontend y diseño</div>
+        <div class="chip-row">
+          <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">TypeScript</span>
+          <span class="chip">React</span><span class="chip">Figma</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="g-title">Control de versiones y DevOps</div>
+        <div class="chip-row">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GitLab</span><span class="chip">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="section-head"><h2>Contacto</h2></div>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:ambriccam@gmail.com">ambriccam@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:+5491126215005">+54 9 11 2621 5005</a>
+      <a class="btn btn-ghost" href="https://github.com/marcoambricca" target="_blank" rel="noopener">github.com/marcoambricca</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/marcoambricca" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="fine">Marco Ambricca — hecho con HTML, CSS y JS.</div>
+  </footer>
+
+</main>
+
+<script>
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('main section');
+  const navLinks = document.querySelectorAll('#nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Drop a photo here: replace the placeholder div with an <img>
+  // e.g. <div class="photo"><img src="your-photo.jpg" alt="Marco Ambricca"></div>
+</script>
+
+</body>
+</html>
